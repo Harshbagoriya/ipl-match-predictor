@@ -14,7 +14,7 @@ teams = ['Sunrisers Hyderabad',
 cities = ['Hyderabad', 'Bangalore', 'Mumbai', 'Indore', 'Kolkata', 'Delhi',
        'Chandigarh', 'Jaipur', 'Chennai', 'Cape Town', 'Port Elizabeth',
        'Durban', 'Centurion', 'East London', 'Johannesburg', 'Kimberley',
-       'Bloemfontein', 'Ahmedabad', 'Cuttack', 'Nagpur', 'Dharamsala',
+       'Bloemfontein', 'Ahmedabad', 'Cuttack', 'Nagpur', 'Dharamshala',
        'Visakhapatnam', 'Pune', 'Raipur', 'Ranchi', 'Abu Dhabi',
        'Sharjah', 'Mohali', 'Bengaluru']
 
@@ -30,16 +30,16 @@ with col2:
 
 selected_city = st.selectbox('Select host city',sorted(cities))
 
-target = st.number_input('Target')
+target = st.number_input('Target' , min_value=0, max_value=300, value=0, format="%d")
 
 col3,col4,col5 = st.columns(3)
 
 with col3:
-    score = st.number_input('Score')
+    score = st.number_input('Score', min_value=0, max_value=300, value=0, format="%d")
 with col4:
-    overs = st.number_input('Overs completed')
+    overs = st.number_input('Overs completed', min_value=0, max_value=20, value=0, format="%d")
 with col5:
-    wickets = st.number_input('Wickets out')
+    wickets = st.number_input('Wickets out', min_value=0, max_value=10, value=0, format="%d")
 
 if st.button('Predict Probability'):
     runs_left = target - score
