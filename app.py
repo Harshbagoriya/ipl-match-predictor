@@ -109,7 +109,7 @@ if uploaded_file:
     fig, ax = plt.subplots(figsize=(6,4))
     teams_plot = [first_match['batting_team'], first_match['bowling_team']]
     probabilities = [prediction_proba[0][1]*100, prediction_proba[0][0]*100]
-    bars = ax.bar(teams_plot, probabilities, color=colors)
+    bars = ax.bar(teams_plot, probabilities, color=["#1f77b4", "#ff7f0e"])
     for bar in bars:
         height = bar.get_height()
         ax.text(bar.get_x() + bar.get_width()/2, height+1, f"{height:.1f}%",
