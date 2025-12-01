@@ -55,3 +55,35 @@ if st.button('Predict Probability'):
     win = result[0][1]
     st.header(batting_team + "- " + str(round(win*100)) + "%")
     st.header(bowling_team + "- " + str(round(loss*100)) + "%")
+
+
+import matplotlib.pyplot as plt
+
+    # Data
+    teams_plot = [batting_team, bowling_team]
+    probabilities = [win * 100, loss * 100]
+
+    # Colors like your sample image
+    colors = ["#1f77b4", "#ff7f0e"]  # Blue and Orange
+
+    # Create the bar chart
+    fig, ax = plt.subplots(figsize=(6, 4))
+
+    bars = ax.bar(teams_plot, probabilities, color=colors)
+
+    # Add value labels above bars
+    for bar in bars:
+        height = bar.get_height()
+        ax.text(
+            bar.get_x() + bar.get_width() / 2,
+            height + 1,
+            f"{height:.1f}%",
+            ha='center', va='bottom', fontsize=12
+        )
+
+    # Labels and title
+    ax.set_ylabel("Win Probability (%)")
+    ax.set_title("Win Probability Comparison")
+    ax.set_ylim(0, 100)
+
+    st.pyplot(fig)
